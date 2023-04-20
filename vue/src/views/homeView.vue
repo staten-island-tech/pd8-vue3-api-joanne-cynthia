@@ -1,9 +1,12 @@
 <template>
-  <h1>homeview</h1>
+  <h1>homeView</h1>
 </template>
 
-<script setup>
-import { ref, Created } from 'vue'
+<script>
+export default {
+  name: 'homeView'
+}
+/* import { ref, Created } from 'vue'
 const data = ref('')
 async function getData() {
   let res = await fetch(
@@ -14,5 +17,5 @@ async function getData() {
 }
 Created(() => {
   getData()
-})
+}) */
 </script>
