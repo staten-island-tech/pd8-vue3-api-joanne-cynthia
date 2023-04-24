@@ -1,15 +1,14 @@
 <template>
   <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-
-    <RouterView />
+    <div class="wrapper">
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div>
   </header>
 
-  <homeView />
-  <h1>app working</h1>
+  <RouterView />
 </template>
 
 <script setup>
