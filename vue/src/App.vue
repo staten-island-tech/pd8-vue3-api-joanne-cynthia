@@ -13,7 +13,6 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import homeView from './views/HomeView.vue'
 </script>
 
 <style scoped></style>
