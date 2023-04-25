@@ -6,7 +6,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import homeView from './views/HomeView.vue'
-import BarChart from '../component/icons/BarChart.vue'
+import BarChart from './component/icons/BarChart.vue'
 </script>
 
 <script>
