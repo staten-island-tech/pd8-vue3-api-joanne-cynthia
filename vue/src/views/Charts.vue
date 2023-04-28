@@ -31,19 +31,19 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const mData = []
-const bklynData = []
-const brxData = []
-const siData = []
-const qData = []
-const allData = []
+const allboroughs = ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens']
+let allArr = []
+let allLengths = []
+let mData = []
+let bklynData = []
+let brxData = []
+let siData = []
+let qData = []
 
-const realData = ref('')
 async function getData() {
   let res = await fetch('https://data.cityofnewyork.us/resource/fuhs-xmg2.json')
   let data = await res.json()
-  realData.value = data.results
-  //console.log(data)
+  console.log(data)
   filterData(data)
 }
 
@@ -64,20 +64,25 @@ function filterData(data) {
     if (data[i].animal_class.includes('Birds') && data[i].borough.includes('Queens')) {
       qData.push(data[i])
     }
+    allArr.push(mData, bklynData, brxData, siData, qData)
+    allArr.forEach(
+      (arr) =>
+        function (arr) {
+          let length = arr.length
+          console.log(length)
+          allLengths.push(length)
+        }
+    )
   }
-  allData.push({
-    boroughs: ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens'],
-    totals: [mData.length, bklynData.length, brxData.length, siData.length, qData.length]
-  })
 }
 
 let chartData = ref({
-  //labels: allData.boroughs, SCUFFED BECAUSE DIDN'T WORK
-  labels: ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens'],
+  labels: allboroughs,
+  //labels: ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens'],
   datasets: [
     {
       label: 'total cases of birds rescued',
-      //data: allData.totals, , SCUFFED BECAUSE DIDN'T WORK
+      //data: allLengths,
       data: [131, 72, 48, 130, 99],
       backgroundColor: ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c']
     }
@@ -85,7 +90,7 @@ let chartData = ref({
 })
 onMounted(() => {
   getData()
-  console.log(allData)
+  console.log()
 })
 </script>
 
