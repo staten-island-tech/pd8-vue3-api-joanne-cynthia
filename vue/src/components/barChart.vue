@@ -1,5 +1,5 @@
 <template>
-  <Bar id="barChart" :data="chartData" />
+  <Bar id="BarChart" :options="chartOptions" :data="chartData" />
 </template>
 
 <script>
@@ -17,15 +17,23 @@ import {
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
-  name: 'barChart',
+  name: 'BarChart',
   components: { Bar },
   props: {
     chartData: {
       type: Object,
       required: true
+    },
+    chartOptions: {
+      type: Object,
+      default: () => ({
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      })
     }
   }
 }
 </script>
-
-<style scoped></style>

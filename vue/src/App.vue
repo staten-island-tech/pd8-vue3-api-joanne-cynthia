@@ -3,12 +3,12 @@
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/charts">Charts</RouterLink>
+        <RouterLink to="/BarView">Bar</RouterLink>
+        <RouterLink to="/PieView">Pie</RouterLink>
       </nav>
+      <RouterView />
     </div>
   </header>
-
-  <RouterView />
 </template>
 
 <script setup>
