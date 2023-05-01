@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: '/charts',
       name: 'charts',
-      component: () => import('../views/Charts.vue')
+      component: () => import('../views/barView.vue')
     }
   ]
 })

@@ -2,7 +2,7 @@
   <h1>hello new yorkers</h1>
   <h2>learn more about animal rescure in nyc</h2>
   <div class="charts">
-    <Bar :data="chartData" />
+    <Bar :data="chartDatatest" />
   </div>
 </template>
 
@@ -63,7 +63,7 @@ function getTotals() {
   console.log(totals.value)
 }
 
-let chartData = ref({
+let chartDatatest = ref({
   labels: boroughs,
   datasets: [
     {
@@ -80,8 +80,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.charts {
-  width: 1000px;
-}
-</style>
+<style scoped></style>
