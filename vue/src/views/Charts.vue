@@ -1,18 +1,17 @@
 <template>
-  <h1>bar chart</h1>
+  <h1>animal rescues in each borough</h1>
   <div id="drop-down-menu">
     <h2>filter graph by borough</h2>
-    <p>select year:</p>
     <select>
-      <option>Manhattan</option>
-      <option>Brooklyn</option>
-      <option>Bronx</option>
-      <option>Staten Island</option>
-      <option>Queens</option>
+      <option v-for="borough in boroughs">{{ borough }}</option>
     </select>
   </div>
+
+  <button v-if="yes" @click="yes = !yes">hide graph</button>
+  <button v-else @click=";(yes = !yes), filterData(realData)">show graph</button>
+
   <div class="charts">
-    <Bar :data="chartData" />
+    <Bar :data="chartData2" v-if="yes" />
   </div>
 </template>
 
@@ -31,37 +30,36 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const allboroughs = ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens']
-let allArr = []
-let allLengths = []
+const realData = ref('')
+async function getData() {
+  let res = await fetch('https://data.cityofnewyork.us/resource/fuhs-xmg2.json')
+  let data = await res.json()
+  realData.value = data
+}
+
+let yes = ref(false)
+let boroughs = ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens']
 let mData = []
 let bklynData = []
 let brxData = []
 let siData = []
 let qData = []
 
-async function getData() {
-  let res = await fetch('https://data.cityofnewyork.us/resource/fuhs-xmg2.json')
-  let data = await res.json()
-  console.log(data)
-  filterData(data)
-}
-
 function filterData(data) {
   for (let i = 0; i < data.length; i++) {
-    if (data[i].animal_class.includes('Birds') && data[i].borough.includes('Manhattan')) {
+    if (data[i].borough.includes('Manhattan')) {
       mData.push(data[i])
     }
-    if (data[i].animal_class.includes('Birds') && data[i].borough.includes('Brooklyn')) {
+    if (data[i].borough.includes('Brooklyn')) {
       bklynData.push(data[i])
     }
-    if (data[i].animal_class.includes('Birds') && data[i].borough.includes('Bronx')) {
+    if (data[i].borough.includes('Bronx')) {
       brxData.push(data[i])
     }
-    if (data[i].animal_class.includes('Birds') && data[i].borough.includes('Staten Island')) {
+    if (data[i].borough.includes('Staten Island')) {
       siData.push(data[i])
     }
-    if (data[i].animal_class.includes('Birds') && data[i].borough.includes('Queens')) {
+    if (data[i].borough.includes('Queens')) {
       qData.push(data[i])
     }
     allArr.push(mData, bklynData, brxData, siData, qData)
@@ -76,21 +74,19 @@ function filterData(data) {
   }
 }
 
-let chartData = ref({
-  labels: allboroughs,
-  //labels: ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens'],
+let chartData2 = ref({
+  labels: 0,
   datasets: [
     {
-      label: 'total cases of birds rescued',
-      //data: allLengths,
-      data: [131, 72, 48, 130, 99],
+      label: 'animal rescues in x',
+      data: 0,
       backgroundColor: ['#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c']
     }
   ]
 })
+
 onMounted(() => {
   getData()
-  console.log()
 })
 </script>
 
@@ -98,4 +94,3 @@ onMounted(() => {
 .charts {
   width: 1000px;
 }
-</style>
