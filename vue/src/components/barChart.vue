@@ -1,5 +1,5 @@
 <template>
-  <Bar id="BarChart" :options="chartOptions" :data="chartData" />
+  <Bar id="BarChart" :data="chartData" />
 </template>
 
 <script>
@@ -23,16 +23,6 @@ export default {
     chartData: {
       type: Object,
       required: true
-    },
-    chartOptions: {
-      type: Object,
-      default: () => ({
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      })
     }
   }
 }

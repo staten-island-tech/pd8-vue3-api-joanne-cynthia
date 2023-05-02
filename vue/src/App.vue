@@ -15,4 +15,14 @@
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
-<style scoped></style>
+<style scoped>
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  margin: 0.5rem;
+  text-decoration: none;
+}
+</style>

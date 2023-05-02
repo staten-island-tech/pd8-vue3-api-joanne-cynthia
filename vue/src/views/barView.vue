@@ -1,16 +1,18 @@
 <template>
-  <h1>animal rescues in each borough</h1>
-  <h2>filter graph by borough</h2>
+  <h1>Rescues for Animal Classes in Each Borough</h1>
+  <h2>Filter Chart by Borough</h2>
+
   <select id="filterSelect" @click="filterSelect()">
     <option value="all">All Boroughs</option>
-    <option value="m">Manhattan</option>
-    <option value="bklyn">Brooklyn</option>
-    <option value="brx">Bronx</option>
-    <option value="si">Staten Island</option>
-    <option value="q">Queens</option>
+    <option value="Manhattan">Manhattan</option>
+    <option value="Brooklyn">Brooklyn</option>
+    <option value="Bronx">Bronx</option>
+    <option value="Staten Island">Staten Island</option>
+    <option value="Queens">Queens</option>
   </select>
+
   <div class="BarChart">
-    <BarChart v-if="loaded" :chartData="chartData" :chartOptions="chartOptions" />
+    <BarChart v-if="loaded" :chartData="chartData" />
   </div>
 </template>
 
@@ -18,37 +20,58 @@
 import BarChart from '../components/BarChart.vue'
 
 export default {
-  name: 'barView',
-  components: { barChart },
+  name: 'BarView',
+  components: { BarChart },
   data() {
     return {
       loaded: false,
       chartData: {
         labels: [],
         datasets: []
-      },
-      chartOptions: {}
+      }
     }
   },
   methods: {
     allSelect: async function () {
       try {
         const res = await fetch('https://data.cityofnewyork.us/resource/fuhs-xmg2.json')
-        let realData = await res.json()
-        let labels = ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens']
-        let total = []
+        let apiData = await res.json()
+        let animals = [
+          'Birds',
+          'Coyotes',
+          'Deer',
+          'Domestic',
+          'Fish',
+          'Marine Mammals',
+          'Marine Reptiles',
+          'Raptors',
+          'Small Mammals',
+          'Terrestrial Reptile or Amphibian'
+        ]
+        let filteredData = []
 
-        labels.forEach((label) => {
-          total.push(realData.filter((el) => el.borough === label).length)
+        animals.forEach((animal) => {
+          filteredData.push(apiData.filter((el) => el.animal_class.includes(animal)).length)
         })
 
         this.chartData = {
-          labels: labels,
+          labels: animals,
           datasets: [
             {
-              data: total,
-              backgroundColor: '#8e4d4d',
-              label: 'total # of rescues'
+              data: filteredData,
+              backgroundColor: [
+                '#9e0142',
+                '#d53e4f',
+                '#f46d43',
+                '#fdae61',
+                '#fee08b',
+                '#e6f598',
+                '#abdda4',
+                '#66c2a5',
+                '#3288bd',
+                '#5e4fa2'
+              ],
+              label: 'Animal Class'
             }
           ]
         }
@@ -60,33 +83,52 @@ export default {
     },
     filterSelect: async function () {
       try {
-        const selection = document.getElementById('filterSelect'.value)
-        if (selection == 'All') {
+        const selection = document.getElementById('filterSelect').value
+        if (selection == 'all') {
           this.allSelect()
         } else {
           const res = await fetch('https://data.cityofnewyork.us/resource/fuhs-xmg2.json')
-          let realData = await res.json()
-          let labels = [
+          let apiData = await res.json()
+          let animals = [
             'Birds',
-            'Terrestrial Reptile or Amphibian',
-            'Small Mammals',
+            'Coyotes',
             'Deer',
-            'Raptors'
+            'Domestic',
+            'Fish',
+            'Marine Mammals',
+            'Marine Reptiles',
+            'Raptors',
+            'Small Mammals',
+            'Terrestrial Reptile or Amphibian'
           ]
           let filteredData = []
-          console.log(realData)
 
-          labels.forEach((label) => {
-            filteredData.push(realData.filter((el) => el.animal_class.includes(label)).length)
+          let filteredBorough = apiData.filter((arr) => arr.borough.includes(selection))
+
+          animals.forEach((animal) => {
+            filteredData.push(
+              filteredBorough.filter((el) => el.animal_class.includes(animal)).length
+            )
           })
 
           this.chartData = {
-            labels: labels,
+            labels: animals,
             datasets: [
               {
                 data: filteredData,
-                backgroundColor: '#8e4d4d',
-                label: 'animal class rescued'
+                backgroundColor: [
+                  '#9e0142',
+                  '#d53e4f',
+                  '#f46d43',
+                  '#fdae61',
+                  '#fee08b',
+                  '#e6f598',
+                  '#abdda4',
+                  '#66c2a5',
+                  '#3288bd',
+                  '#5e4fa2'
+                ],
+                label: 'Animal Class'
               }
             ]
           }
@@ -105,4 +147,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.BarChart {
+  width: 1000px;
+}
+</style>

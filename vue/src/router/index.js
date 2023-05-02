@@ -12,7 +12,7 @@ const router = createRouter({
     {
       path: '/BarView',
       name: 'BarView',
-      component: () => import('../views/ParView.vue')
+      component: () => import('../views/BarView.vue')
     },
     {
       path: '/PieView',
