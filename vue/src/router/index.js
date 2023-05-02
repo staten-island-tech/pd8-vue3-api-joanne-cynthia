@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import BarView from '../views/BarView.vue'
+import PieView from '../views/PieView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,12 +14,12 @@ const router = createRouter({
     {
       path: '/BarView',
       name: 'BarView',
-      component: () => import('../views/BarView.vue')
+      component: BarView
     },
     {
       path: '/PieView',
       name: 'PieView',
-      component: () => import('../views/PieView.vue')
+      component: PieView
     }
   ]
 })
