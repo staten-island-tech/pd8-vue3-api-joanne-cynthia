@@ -82,7 +82,7 @@ export default {
             datasets: [
               {
                 data: filteredData,
-                backgroundColor: ['#B6E2A1', '#FFFBC1', '#FEBE8C', '#F7A4A4']
+                backgroundColor: ['#02d46e', '#fde600', '#ff8440', '#fe6f5e']
               }
             ]
           }
@@ -106,7 +106,7 @@ export default {
   width: 500px;
   margin-top: 5rem;
   position: relative;
-  left: 50rem;
+  left: 40rem;
   bottom: 5rem;
 }
 
@@ -122,6 +122,7 @@ h2 {
 
 #filterSelect,
 option {
-  font-size: 1.5rem;
+  font-size: 6rem;
+  width: 13rem;
 }
 </style>

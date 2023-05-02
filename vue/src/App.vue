@@ -37,6 +37,7 @@ nav {
   justify-content: center;
   font-size: 4rem;
   margin: 5rem;
+  font-weight: bold;
 }
 
 nav a,

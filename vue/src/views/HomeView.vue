@@ -59,8 +59,18 @@ export default {
 </script>
 
 <style scoped>
+
+h1 {
+  text-align: center;
+}
+
+h2{
+  text-align: center;
+}
 .BarChart {
   width: 1000px;
   margin-top: 4rem;
+  margin-left: 10rem;
+
 }
 </style>
