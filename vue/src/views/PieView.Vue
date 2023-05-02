@@ -122,6 +122,7 @@ h2 {
 
 #filterSelect,
 option {
-  font-size: 4rem;
+  font-size: 6rem;
+  width: 13rem;
 }
 </style>

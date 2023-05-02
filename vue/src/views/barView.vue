@@ -152,7 +152,7 @@ export default {
   width: 100rem;
   margin-top: 5rem;
   position: relative;
-  left: 25rem;
+  left: 10rem;
   bottom: 5rem;
 }
 
@@ -168,6 +168,7 @@ h2 {
 
 #filterSelect,
 option {
-  font-size: 4rem;
+  font-size: 6rem;
+  width: 13rem;
 }
 </style>
