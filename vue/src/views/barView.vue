@@ -1,18 +1,22 @@
 <template>
   <h1>Rescues for Animal Classes in Each Borough</h1>
-  <h2>Filter Chart by Borough</h2>
 
-  <select id="filterSelect" @click="filterSelect()">
-    <option value="all">All Boroughs</option>
-    <option value="Manhattan">Manhattan</option>
-    <option value="Brooklyn">Brooklyn</option>
-    <option value="Bronx">Bronx</option>
-    <option value="Staten Island">Staten Island</option>
-    <option value="Queens">Queens</option>
-  </select>
+  <div class="container">
+    <div id="drop-down">
+      <h2>Filter Chart by Borough</h2>
+      <select id="filterSelect" @click="filterSelect()">
+        <option value="all">All Boroughs</option>
+        <option value="Manhattan">Manhattan</option>
+        <option value="Brooklyn">Brooklyn</option>
+        <option value="Bronx">Bronx</option>
+        <option value="Staten Island">Staten Island</option>
+        <option value="Queens">Queens</option>
+      </select>
+    </div>
 
-  <div class="BarChart">
-    <BarChart v-if="loaded" :chartData="chartData" />
+    <div class="BarChart">
+      <BarChart v-if="loaded" :chartData="chartData" />
+    </div>
   </div>
 </template>
 
@@ -162,9 +166,6 @@ export default {
 .BarChart {
   width: 100rem;
   margin-top: 5rem;
-  position: relative;
-  left: 30rem;
-  bottom: 5rem;
 }
 
 h1 {
