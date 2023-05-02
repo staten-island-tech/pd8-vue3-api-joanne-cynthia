@@ -158,6 +158,7 @@ export default {
 
 h1 {
   font-size: 3rem;
+  text-align: center;
 }
 
 h2 {
@@ -167,6 +168,6 @@ h2 {
 
 #filterSelect,
 option {
-  font-size: 1.5rem;
+  font-size: 4rem;
 }
 </style>
