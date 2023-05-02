@@ -112,6 +112,7 @@ export default {
 
 h1 {
   font-size: 3rem;
+  text-align: center;
 }
 
 h2 {
