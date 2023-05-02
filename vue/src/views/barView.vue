@@ -148,6 +148,17 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#drop-down {
+  display: flex;
+  flex-direction: column;
+}
+
 .BarChart {
   width: 100rem;
   margin-top: 5rem;

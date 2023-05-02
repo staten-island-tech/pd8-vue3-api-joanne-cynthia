@@ -1,18 +1,21 @@
 <template>
   <h1>Condition of Animal Rescues in Each Borough</h1>
-  <h2>Filter Chart by Borough</h2>
 
-  <select id="filterSelect" @click="filterSelect()">
-    <option value="all">All Boroughs</option>
-    <option value="Manhattan">Manhattan</option>
-    <option value="Brooklyn">Brooklyn</option>
-    <option value="Bronx">Bronx</option>
-    <option value="Staten Island">Staten Island</option>
-    <option value="Queens">Queens</option>
-  </select>
-
-  <div class="PieChart">
-    <PieChart v-if="loaded" :chartData="chartData" />
+  <div class="container">
+    <div id="drop-down">
+      <h2>Filter Chart by Borough</h2>
+      <select id="filterSelect" @click="filterSelect()">
+        <option value="all">All Boroughs</option>
+        <option value="Manhattan">Manhattan</option>
+        <option value="Brooklyn">Brooklyn</option>
+        <option value="Bronx">Bronx</option>
+        <option value="Staten Island">Staten Island</option>
+        <option value="Queens">Queens</option>
+      </select>
+    </div>
+    <div class="PieChart">
+      <PieChart v-if="loaded" :chartData="chartData" />
+    </div>
   </div>
 </template>
 
@@ -102,12 +105,20 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#drop-down {
+  display: flex;
+  flex-direction: column;
+}
+
 .PieChart {
   width: 500px;
   margin-top: 5rem;
-  position: relative;
-  left: 50rem;
-  bottom: 5rem;
 }
 
 h1 {
