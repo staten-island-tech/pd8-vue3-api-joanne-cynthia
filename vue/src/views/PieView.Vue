@@ -82,7 +82,7 @@ export default {
             datasets: [
               {
                 data: filteredData,
-                backgroundColor: ['#B6E2A1', '#FFFBC1', '#FEBE8C', '#F7A4A4']
+                backgroundColor: ['#02d46e', '#fde600', '#ff8440', '#fe6f5e']
               }
             ]
           }
