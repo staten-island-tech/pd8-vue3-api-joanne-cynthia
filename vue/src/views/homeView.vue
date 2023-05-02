@@ -61,5 +61,6 @@ export default {
 <style scoped>
 .BarChart {
   width: 1000px;
+  margin-top: 4rem;
 }
 </style>

@@ -104,5 +104,23 @@ export default {
 <style scoped>
 .PieChart {
   width: 500px;
+  margin-top: 5rem;
+  position: relative;
+  left: 50rem;
+  bottom: 5rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 1rem 0rem;
+}
+
+#filterSelect,
+option {
+  font-size: 1.5rem;
 }
 </style>

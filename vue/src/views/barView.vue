@@ -149,6 +149,24 @@ export default {
 
 <style scoped>
 .BarChart {
-  width: 1000px;
+  width: 100rem;
+  margin-top: 5rem;
+  position: relative;
+  left: 25rem;
+  bottom: 5rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 1rem 0rem;
+}
+
+#filterSelect,
+option {
+  font-size: 1.5rem;
 }
 </style>
