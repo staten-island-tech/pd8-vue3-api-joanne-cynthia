@@ -1,6 +1,6 @@
 <template>
   <h1>Condition of Animal Rescues in Each Borough</h1>
-  <h2>Filter Chart by Borough</h2>
+  <h2> Chart by Borough</h2>
 
   <select id="filterSelect" @click="filterSelect()">
     <option value="all">All Boroughs</option>
